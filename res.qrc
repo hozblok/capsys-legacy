@@ -1,0 +1,39 @@
+<RCC>
+    <qresource prefix="/images">
+        <file alias="open">images/open.png</file>
+        <file alias="save">images/save.png</file>
+        <file alias="default">images/file_settings.png</file>
+        <file alias="ok">images/ok.png</file>
+        <file alias="arrow_undo">images/arrow_undo.png</file>
+        <file>images/atom.png</file>
+        <file alias="main">images/comment_settings.png</file>
+        <file>images/favourite_settings.png</file>
+        <file>images/favs.png</file>
+        <file>images/X.png</file>
+        <file alias="exit">images/X-ball.png</file>
+        <file alias="addScreen">images/file_add.png</file>
+        <file>images/gnome-fs-loading-icon.png</file>
+        <file>images/note_add.png</file>
+        <file alias="addCap">images/star_add.png</file>
+        <file alias="about qt">images/1361593773_question-g.png</file>
+        <file>images/1361593785_question-r.png</file>
+        <file>images/1361593786_question-y.png</file>
+        <file>images/1361593791_question-lb.png</file>
+        <file>images/1361593792_question-p.png</file>
+        <file>images/1361593793_question-b.png</file>
+        <file alias="about CAPSYS">images/1361593799_bullet_question.png</file>
+        <file alias="Removed">images/1361599874_notification_remove.png</file>
+        <file alias="Accepted">images/1361599876_notification_done.png</file>
+        <file alias="Warning">images/1361601137_notification_warning.png</file>
+        <file alias="chart">images/1361602520_Line-chart.png</file>
+        <file alias="arrowUp">images/1361602649_arrow_up.png</file>
+        <file alias="arrowDown">images/1361602657_arrow_down.png</file>
+        <file alias="arrowLeft">images/1361602659_arrow_left.png</file>
+        <file alias="arrowRight">images/1361602667_arrow_right.png</file>
+        <file alias="add">images/1361854613_bullet_add.png</file>
+        <file alias="remove">images/1361854673_remove.png</file>
+    </qresource>
+    <qresource prefix="/data">
+        <file>data/defaultData.xml</file>
+    </qresource>
+</RCC>
