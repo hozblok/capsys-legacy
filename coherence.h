@@ -16,8 +16,7 @@
 #include "sourceandenvir5t.h"
 #include "dialogsetrangesetc.h"
 
-#include <QtConcurrentMap>
-#include <QtConcurrentRun>
+#include <QtConcurrent>
 #include <QtCore>
 //#include <functional>
 //#include <algorithm>

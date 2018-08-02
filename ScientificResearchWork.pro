@@ -4,14 +4,13 @@
 #
 #-------------------------------------------------
 
-QT       += core gui xml
+QT += core gui xml widgets concurrent
 
-TARGET = ScientificResearchWork
+TARGET = capsys-legacy
 TEMPLATE = app
-CONFIG += console
 
 SOURCES += main.cpp\
-        mainwindow.cpp \
+    mainwindow.cpp \
     coherence.cpp \
     randomforcap.cpp \
     dialogtreedata.cpp \
@@ -24,7 +23,7 @@ SOURCES += main.cpp\
     testfft.cpp \
     testsource.cpp
 
-HEADERS  += mainwindow.h \
+HEADERS += mainwindow.h \
     coherence.h \
     randomforcap.h \
     dialogtreedata.h \
@@ -37,7 +36,7 @@ HEADERS  += mainwindow.h \
     testfft.h \
     testsource.h
 
-FORMS    += mainwindow.ui \
+FORMS += mainwindow.ui \
     dialogtreedata.ui \
     dialogsetrangesetc.ui
 
@@ -63,26 +62,22 @@ TRANSLATIONS += I18n_en.ts I18n_ru.ts
 #win32: PRE_TARGETDEPS += $$PWD/../../../../../usr/lib/gsl.lib
 #else:unix:!symbian: PRE_TARGETDEPS += $$PWD/../../../../../usr/lib/libgsl.a
 
-
-
-######################
-
-
-
-unix:!macx:!symbian: LIBS += -L$$PWD/../../../../../usr/local/lib/ -lmgl
-
-INCLUDEPATH += $$PWD/../../../../../usr/local/include
-DEPENDPATH += $$PWD/../../../../../usr/local/include
-
-
-unix:!macx:!symbian: LIBS += -L$$PWD/../../../../../usr/local/lib/ -lmgl-qt
-
-INCLUDEPATH += $$PWD/../../../../../usr/local/include
-DEPENDPATH += $$PWD/../../../../../usr/local/include
-
-
-
 #######################
 
 RESOURCES += \
     res.qrc
+
+########## mathgl ############
+
+unix:!macx: LIBS += -L$$PWD/mathgl/lin64/lib/ -lmgl -lmgl-qt -lmgl-qt5
+
+unix:INCLUDEPATH += $$PWD/mathgl/lin64/include
+unix:DEPENDPATH += $$PWD/mathgl/lin64/include
+
+unix:!macx: PRE_TARGETDEPS += $$PWD/mathgl/mathql-2.4.2.1-build.lin64/lib/libmgl.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/mathgl/mathql-2.4.2.1-build.lin64/lib/libmgl-qt.a
+unix:!macx: PRE_TARGETDEPS += $$PWD/mathgl/mathql-2.4.2.1-build.lin64/lib/libmgl-qt5.a
+
+
+
+
