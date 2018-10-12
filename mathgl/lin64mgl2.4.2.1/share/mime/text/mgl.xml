@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<mime-type xmlns="http://www.freedesktop.org/standards/shared-mime-info" type="text/mgl">
+  <!--Created automatically by update-mime-database. DO NOT EDIT!-->
+  <alias type="text/x.mgl"/>
+  <alias type="text/x-mgl"/>
+  <comment>MGL script</comment>
+  <icon name="/home/don_vanchos/capsys-legacy/mathgl/lin64/share/pixmaps/udav.png"/>
+  <glob pattern="*.mgl"/>
+</mime-type>

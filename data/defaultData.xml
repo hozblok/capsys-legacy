@@ -1,0 +1,129 @@
+<Project>
+ <Source_properties itemCount="11">
+  <field itemCount="3">
+   <name>minimum of the position coordinates of the source (x y z) :</name>
+   <value1>-1e-14</value1>
+   <value2>-1e-14</value2>
+   <value3>-8000</value3>
+  </field>
+  <field itemCount="3">
+   <name>maximum of the position coordinates of the source (x y z) :</name>
+   <value4>1e-14</value4>
+   <value5>1e-14</value5>
+   <value6>-8000</value6>
+  </field>
+  <field itemCount="1">
+   <name>surface equation (boundary of the source) (funSource(x,y) > 0) :</name>
+   <value7>x^2+y^2-0.01</value7>
+  </field>
+  <field itemCount="2">
+   <name>angular aperture (minimum) (phiAzimuth thetaZenith) :</name>
+   <value8>1e-14</value8>
+   <value9>-1e-3</value9>
+  </field>
+  <field itemCount="2">
+   <name>angular aperture (maximum) (phiAzimuth thetaZenith) :</name>
+   <value10>3.141592653589793</value10>
+   <value11>1e-3</value11>
+  </field>
+  <field itemCount="1">
+   <name>average frequancy (GHz) :</name>
+   <value12>1.9343914782921e9</value12>
+  </field>
+  <field itemCount="2">
+   <name>radiating oscillations ReE(t), ImE(t) ([t] = ns) :</name>
+   <value13>cos(2*pi*1.9343914782921e9*t)</value13>
+   <value14>0</value14>
+  </field>
+  <field itemCount="1">
+   <name>amplitude of oscillations A(x,y) :</name>
+   <value15>exp(-(x^2+y^2)*0/(2*1))</value15>
+  </field>
+  <field itemCount="1">
+   <name>duration of oscillations (ns) :</name>
+   <value16>0.51695844e-8</value16>
+  </field>
+  <field itemCount="1">
+   <name>delay oscillations that characterizes initial phase  t(x,y) (ns) : </name>
+   <value17>0</value17>
+  </field>
+  <field itemCount="1">
+   <name>scope of the initial phase (fun(x,y) > 0) :</name>
+   <value18>y-abs(x)</value18>
+  </field>
+ </Source_properties>
+ <Capillary_properties itemCount="5">
+  <field itemCount="1">
+   <name>equation of the inner surface of the capillary (fCappilary(x,y,z) = 0) :</name>
+   <value19>x^2+y^2-1</value19>
+  </field>
+  <field itemCount="1">
+   <name>equation of the lower edge of the capillary (fLower(x,y,z) = 0) :</name>
+   <value20>z-0</value20>
+  </field>
+  <field itemCount="1">
+   <name>equation of the upper edge of the capillary (fUpper(x,y,z) = 0) :</name>
+   <value21>z-6000</value21>
+  </field>
+  <field itemCount="1">
+   <name>plasma frequency of the capillary (GHz) :</name>
+   <value22>7.2539680435955e6</value22>
+  </field>
+  <field itemCount="1">
+   <name>imaginary part of the capillary permittivity :</name>
+   <value23>1e-7</value23>
+  </field>
+ </Capillary_properties>
+ <Screen_properties itemCount="3">
+  <field itemCount="1">
+   <name>the screen position's equation  ( fScreen(x,y,z) = 0 ) :</name>
+   <value24>z-6000</value24>
+  </field>
+  <field itemCount="1">
+   <name>the size of edges of square screen :</name>
+   <value25>3</value25>
+  </field>
+  <field itemCount="1">
+   <name>number of cells on the screen per unit length :</name>
+   <value26>100</value26>
+  </field>
+ </Screen_properties>
+ <Other_properties itemCount="8">
+  <field itemCount="1">
+   <name>mathematical accuracy of the calculations :</name>
+   <value27>2e-13</value27>
+  </field>
+  <field itemCount="2">
+   <name>permittivity environment (Re Im) :</name>
+   <value28>1.0</value28>
+   <value29>0.0</value29>
+  </field>
+  <field itemCount="1">
+   <name>number of rays :</name>
+   <value30>100000</value30>
+  </field>
+  <field itemCount="1">
+   <name>number of points for FFT :</name>
+   <value31>1024</value31>
+  </field>
+  <field itemCount="1">
+   <name>rays are calculated from the screen(0) or from the source(1) :</name>
+   <value32>1</value32>
+  </field>
+  <field itemCount="2">
+   <name>the degree of coherence is calculated for the next point on the screen:</name>
+   <value33>0.</value33>
+   <value34>0.</value34>
+  </field>
+  <field itemCount="1">
+   <name>take into account the non-reflecting radiation(1) or don't take (0) :</name>
+   <value35>1</value35>
+  </field>
+  <field itemCount="1">
+   <name>unit of measurement of lengths: m*10^ :</name>
+   <value36>-5</value36>
+  </field>
+ </Other_properties>
+ <countScreens>1</countScreens>
+ <countCapillaries>1</countCapillaries>
+</Project>
