@@ -1439,7 +1439,6 @@ void Coherence::slotSetRanges()
     rxrotate = dialogranges->getRx();
     ryrotate = dialogranges->getRy();
     rzrotate = dialogranges->getRz();
-//    qDebug() << xrang_ << xrang__ << yrang_ << yrang__ << zrang_ << zrang__;
 }
 
 bool Coherence::tryLoadTotal() const

@@ -3,9 +3,10 @@
 
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent),
-    ui(new Ui::MainWindow)
-  , flagDAQ(false)
-  , createCoherenceWasHappened(false)//изменяется только в одном месте, при создании coherence
+    ui(new Ui::MainWindow),
+    flagDAQ(false),
+    coherence(0),
+    mathglWindow(0)
 {
     ui->setupUi(this);
     dialogtreedata = new DialogTreeData(this);
@@ -43,6 +44,8 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    delete mathglWindow;
+    mathglWindow = 0;
     delete ui;
 }
 
@@ -72,17 +75,12 @@ void MainWindow::slotCreateCoherence()
         QFile file1;
         file1.setFileName(dialogtreedata->file1Name);
         QFileInfo tempFileInfo(file1);
-//        qDebug() << "QQQQQQQQQQQQQQQ" <<dialogtreedata->file1Name << tempFileInfo.size() << tempFileInfo.completeBaseName();
-        if(createCoherenceWasHappened)
+        if(coherence != 0)
         {
             delete coherence;
-            coherence = new Coherence(tempFileInfo.completeBaseName().toLocal8Bit(),this);
+            coherence = 0;
         }
-        else
-        {
-            createCoherenceWasHappened = true;
-            coherence = new Coherence(tempFileInfo.completeBaseName().toLocal8Bit(),this);
-        }
+        coherence = new Coherence(tempFileInfo.completeBaseName().toLocal8Bit(), this);
 
         ui->toolButton_calcTheRays->setEnabled(true);
         QIcon icon_;
@@ -193,28 +191,69 @@ void MainWindow::tryLoad()
     }
 }
 
+int MainWindow::closeQMathGLWindow()
+{
+    if (mathglWindow != 0) {
+        // Hide main window.
+        this->lower();
+        // Update and Show mathql widget.
+        // Unfortunately, mathgl does not give us pointer to QMainWindow (or QMathGL) inside mglQT.
+        mathglWindow->Update();
+        QMessageBox::StandardButton reply;
+            reply = QMessageBox::question(0, "Close MathGL widget", "Are you sure you want to close the window with 2d/3d plot?",
+                QMessageBox::Yes|QMessageBox::No);
+        if (reply == QMessageBox::Yes) {
+            // Delete unwaned widget.
+            delete mathglWindow;
+            mathglWindow = 0;
+        } else {
+            return -1;
+        }
+    }
+    return 0;
+}
+
+int MainWindow::openQMathGLWindow(const char * title)
+{
+    if (mathglWindow != 0) {
+        return -1;
+    }
+    // Show new mathgl window.
+    mathglWindow = new mglQT(coherence, title);
+    return mathglWindow->Run();
+}
+
 void MainWindow::slotTestDraw()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 0;
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawAnglesScr()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     if(flagDAQ == false)
     {
         this->slotDAQ();
     }
     coherence->flagDraw = 3;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawCoefOfRefl()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 4;
     coherence->flagWithAnimation = ui->checkBox_withAnimation->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::DAQdone()
@@ -357,49 +396,70 @@ void MainWindow::slotCalcSpectrum()
 
 void MainWindow::slotDrawInCohIntens()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 1;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawReDegOfCoh()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 2;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawAbsDegOfCoh()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 9;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawTotalIntensity()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 5;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawIntTerm()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 8;
     coherence->flagWithSetRanges = ui->checkBox_withSetRanges->isChecked();
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawInitialSpectrum()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 70;
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 }
 
 void MainWindow::slotDrawFinalSpectrum()
 {
+    if (this->closeQMathGLWindow()) {
+        return;
+    }
     coherence->flagDraw = 71;
-    mglwindowtest = new mglQT(coherence,"MathGL Graph");
+    this->openQMathGLWindow();
 
 }
 
@@ -419,6 +479,7 @@ void MainWindow::slotCalcAndDraw()
         this->slotCalcDegrOfCoh();
         this->slotCalcIntensity();
 
+        // TODO
 //        coherence->flagDraw = 11;
 //        if( i == DEBUGINCEPTIONIMG )
 //        {
@@ -434,5 +495,4 @@ void MainWindow::slotCalcAndDraw()
 //        mglwindowtest->Update();
 //        mglwindowtest->~mglGraph();
     }
-    qDebug() << "GOTOVO!!";
 }

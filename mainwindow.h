@@ -12,6 +12,11 @@ class MainWindow;
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
+
+    // Method for closing the mathql window.
+    int closeQMathGLWindow();
+    // Method for opening the mathql window and draw graphics.
+    int openQMathGLWindow(const char * title = "MathGL Graph");
     
 public:
     explicit MainWindow(QWidget *parent = 0);
@@ -57,9 +62,7 @@ private:
     Ui::MainWindow *ui;
     DialogTreeData *dialogtreedata;
     Coherence *coherence;
-    mglQT *mglwindowtest;
-
-    bool createCoherenceWasHappened;
+    mglQT *mathglWindow;
 
     bool flagDAQ;//флаг отвечающий за "посчитано ли DAQ или не посчитано"
     void tryLoad();//попытаться загрузить данные из файлов

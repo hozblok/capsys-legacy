@@ -1,23 +1,24 @@
 #ifndef COHERENCE_H
 #define COHERENCE_H
 
+#include <QtConcurrent>
+#include <QtCore>
 #include <QObject>
 #include <QVector>
 #include <QList>
 #include <QFile>
 #include <QDataStream>
 #include <QIODevice>
-#include <mgl2/qt.h>
 #include <QList>
 #include <QTreeWidget>
+
+#include <mgl2/qt.h>
+#include <mgl2/qmathgl.h>
 
 #include "capillary.h"
 #include "screen.h"
 #include "sourceandenvir5t.h"
 #include "dialogsetrangesetc.h"
-
-#include <QtConcurrent>
-#include <QtCore>
 //#include <functional>
 //#include <algorithm>
 //#include <memory>
@@ -33,7 +34,7 @@ class Coherence : public QObject, public mglDraw
 {
     Q_OBJECT
 private:
-    int kolvoProc; //количество потоков для распрараллеливания
+    int kolvoProc;  //количество потоков для распрараллеливания
     int kolvoProcDAQ; //то же самое для sendRay
     QByteArray nameProj;
 
@@ -193,9 +194,9 @@ public:
     void threadPrepare(/*long & i*/);//DELETEME - в итоге этот метод не нужен...
     void threadMainIntegrConvolMNOGOPOTOCHNIJ_2(long & i); //***РАБОТАЕТ НЕ ПРАВИЛЬНО - теперь нормально работает 19.05.2013 - НЕ РАБОТАЕТ! Усреднение по области == интенсивность!
     void threadMainIntegrConvolMNOGOPOTOCHNIJ_3(long & i);
-    int mainIntegrationConvolutionMNOGOPOTOCHNIJ();//ОСНОВНОЙ МЕТОД!!!!
+    int mainIntegrationConvolutionMNOGOPOTOCHNIJ();// ОСНОВНОЙ МЕТОД!!!!
     int mainIntegrationConvolutionMNOGOPOTOCHNIJdegOfCoh();
-    int mainIntegrationConvolutionMNOGOPOTOCHNIJDegOfCoh_NEW();//ну метод хороший... соединён со ***...ну работает, да, но чё-то не так, как хотелось бы... ну и хрен с ним...
+    int mainIntegrationConvolutionMNOGOPOTOCHNIJDegOfCoh_NEW();//соединён со ***...работает не так, как нужно.
     void setAverageDegOfCoh();
 
 

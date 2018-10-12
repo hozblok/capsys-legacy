@@ -95,10 +95,10 @@ int testSource::Draw(mglGraph *gr)
     mglData c(numOfPointsForTest);
     mglData phase(numOfPointsForTest);
 
-    x.Set(tx.toStdVector());
-    y.Set(ty.toStdVector());
-    c.Set(tc.toStdVector());
-    phase.Set(tphase.toStdVector());
+    x.Set(tx.toStdVector().data(), numOfPointsForTest);
+    y.Set(ty.toStdVector().data(), numOfPointsForTest);
+    c.Set(tc.toStdVector().data(), numOfPointsForTest);
+    phase.Set(tphase.toStdVector().data(), numOfPointsForTest);
 
     if(flagDraw == 0)//measurement
     {
